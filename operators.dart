@@ -2,8 +2,6 @@ void main() {
   //Arthimatic operators
   int a = 5;
   int b = 10;
-  int c = 25;
-  int d = 5;
   print(a + b);
   print(a - b);
   print(a * b);
@@ -38,7 +36,7 @@ void main() {
   var string = "Nitesh";
   var num3 = 5;
   print(string is String);
-  print(num is! int);
+  print(num3 is! int);
 
   print("----------------");
 //Assigment operator
