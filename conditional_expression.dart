@@ -14,5 +14,5 @@ void main() {
 
   var id2 = null;
   var userdetail2 = id2 ?? "New User";
-  print(userdetail2);
+  print(userdetail2); //return new user;
 }
