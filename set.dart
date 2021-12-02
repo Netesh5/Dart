@@ -19,4 +19,13 @@ void main() {
   //correct way
   var st4 = <int>{};
   print(st4.runtimeType);
+  print("--------------");
+
+  //Add item to empty set
+  var st5 = <String>{};
+  st5.add("Dart");
+  st5.add("Flutter");
+  st5.add("ios");
+  st5.add("AR");
+  print(st5);
 }
