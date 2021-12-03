@@ -80,5 +80,7 @@ void main() {
   //forEach loop with Map
   student_detail.forEach((key, value) => print(key + ": " + value));
   //or
-  //student.detail.forEach((key,value)=>print("$key = $value"));
+  //student.detail.forEach((key,value)=>print("$key = $value")).;
+
+  //Completed
 }
