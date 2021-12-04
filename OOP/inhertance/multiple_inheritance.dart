@@ -1,0 +1,1 @@
+//multiple inheritance is possible using implement method

@@ -1,12 +1,13 @@
 //we cannot create object of abstract class
 //we cannot define method
 abstract class parent {
-  void display(); //abstract method
+  //we can write normal methods and variable
+  void display(); //Abstract method
 }
 
 class child extends parent {
+  //defining Abstract method of parent class
   void display() {
-    //defining Abstract method of parent class
     print("Hello world");
   }
 }
