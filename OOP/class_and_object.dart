@@ -34,4 +34,5 @@ void main() {
   print(mobile.memory);
   int total_mem = mobile.Memory(4);
   print("Total memory : $total_mem");
+  print("------------");
 }
