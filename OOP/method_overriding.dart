@@ -10,6 +10,7 @@ class child extends parent {
   @override
   void display() {
     print("I am child");
+
     //super keyword to access parent variable with same name in child class
     print(super.num);
     print("child num: $num");
