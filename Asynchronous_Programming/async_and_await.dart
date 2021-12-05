@@ -7,6 +7,7 @@
 //   print("Hello");
 // }
 
+//to get data from future
 Future<String> name() {
   return Future.delayed(Duration(seconds: 5), () {
     return "Nitesh paudel";
