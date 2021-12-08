@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -27,18 +27,60 @@ class Fetchingdata extends StatefulWidget {
 
 class _FetchingdataState extends State<Fetchingdata> {
   // ignore: non_constant_identifier_names
-  String? Stringresponse;
 
+  //<-------To fetch String data----------->
+  // String? Stringresponse;
+
+  // Future fetchdata() async {
+  //   http.Response response;
+  //   response = await http.get(
+  //     Uri.parse(
+  //       'https://thegrowingdeveloper.org/apiview?id=1&type=text/html',
+  //     ),
+  //   );
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       Stringresponse = response.body;
+  //     });
+  //   }
+  // }
+
+  // @override
+  // void initState() {
+  //   fetchdata();
+  //   super.initState();
+  // }
+
+  //<----------To fetch List data----------->
+
+  // List? listresponse;
+  // Future fetchdata() async {
+  //   http.Response response;
+  //   response = await http
+  //       .get(Uri.parse('https://thegrowingdeveloper.org/apiview?id=4'));
+  //   if (response.statusCode == 200) {
+  //     setState(() {
+  //       listresponse = json.decode(response.body);
+  //     });
+  //   }
+  // }
+
+  // @override
+  // void initState() {
+  //   fetchdata();
+  //   super.initState();
+  // }
+
+  //<----------To fetch Map data------------>
+
+  Map? mapresponse;
   Future fetchdata() async {
     http.Response response;
-    response = await http.get(
-      Uri.parse(
-        'https://thegrowingdeveloper.org/apiview?id=1&type=text/html',
-      ),
-    );
+    response = await http
+        .get(Uri.parse('https://thegrowingdeveloper.org/apiview?id=2'));
     if (response.statusCode == 200) {
       setState(() {
-        Stringresponse = response.body;
+        mapresponse = json.decode(response.body);
       });
     }
   }
@@ -69,11 +111,14 @@ class _FetchingdataState extends State<Fetchingdata> {
           const SizedBox(
             height: 20,
           ),
-          Text(Stringresponse.toString(),
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              )),
+          mapresponse == null
+              ? Container()
+              : //to remove null (red screen error)
+              Text(mapresponse!['category'].toString(),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  )),
         ],
       ),
     );
