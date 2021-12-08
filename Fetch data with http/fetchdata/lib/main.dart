@@ -32,19 +32,14 @@ class _FetchingdataState extends State<Fetchingdata> {
   Future fetchdata() async {
     http.Response response;
     response = await http.get(
-        Uri.parse(
-          'https://thegrowingdeveloper.org/apiview?id=1&type=text/html',
-        ),
-        headers: {
-          "Accept": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        });
+      Uri.parse(
+        'https://thegrowingdeveloper.org/apiview?id=1&type=text/html',
+      ),
+    );
     if (response.statusCode == 200) {
       setState(() {
         Stringresponse = response.body;
       });
-    } else {
-      throw Exception('Failed to load data');
     }
   }
 
