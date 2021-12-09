@@ -128,14 +128,27 @@ class _FetchingdataState extends State<Fetchingdata> {
                 return Card(
                   child: Column(
                     children: [
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Image.network(
                         listresponse![index]["image_url"],
                       ),
+                      const SizedBox(
+                        height: 15,
+                      ),
                       Title(
-                          color: Colors.black,
-                          child: Text(listresponse![index]["title"],
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold)))
+                        color: Colors.black,
+                        child: Text(listresponse![index]["title"],
+                            style: const TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold)),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(listresponse![index]["description"],
+                          style: const TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold))
                     ],
                   ),
                   shape: RoundedRectangleBorder(
