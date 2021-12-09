@@ -73,6 +73,7 @@ class _FetchingdataState extends State<Fetchingdata> {
   //<----------To fetch Map data------------>
 
   Map? mapresponse;
+  List? listresponse;
   Future fetchdata() async {
     http.Response response;
     response = await http
@@ -80,6 +81,7 @@ class _FetchingdataState extends State<Fetchingdata> {
     if (response.statusCode == 200) {
       setState(() {
         mapresponse = json.decode(response.body);
+        listresponse = mapresponse!["facts"];
       });
     }
   }
@@ -97,28 +99,53 @@ class _FetchingdataState extends State<Fetchingdata> {
         backgroundColor: Colors.deepOrangeAccent,
         title: const Text("Fetching Data"),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          const Text("Fetching String data",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              )),
-          const SizedBox(
-            height: 20,
-          ),
-          mapresponse == null
-              ? Container()
-              : //to remove null (red screen error)
-              Text(mapresponse!['category'].toString(),
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  )),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            const Text("Fetching String data",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+            const SizedBox(
+              height: 20,
+            ),
+            mapresponse == null
+                ? Container()
+                : //to remove null (red screen error)
+                Text(mapresponse!['category'].toString(),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    )),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: listresponse == null ? 0 : listresponse!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: Column(
+                    children: [
+                      Image.network(
+                        listresponse![index]["image_url"],
+                      ),
+                      Title(
+                          color: Colors.black,
+                          child: Text(listresponse![index]["title"],
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold)))
+                    ],
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
